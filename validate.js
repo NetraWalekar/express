@@ -3,7 +3,7 @@ const zod = require('zod')
 function validate(obj){
     const schema = zod.object({
         email : zod.string().email(),
-        password : zod.string().min(8)
+        password : zod.string().min(8).regex(/[!@#$%^&*()_+=]/)
     })
 
     const response = schema.safeParse(obj)
@@ -12,6 +12,6 @@ function validate(obj){
 
 validate({
     email : "netra@gmail.com",
-    password : "jfkdj55994u"
+    password : "netra@#!"
 
 })
